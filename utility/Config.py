@@ -9,3 +9,5 @@ SQLConfig = {
           "charset":"utf8" ,
         }
 FileAdressConfig = ("1122",)
+
+FileNameConfig = (r"G:\MyProjectOfPython\IntelligentXB\saveHistory",)

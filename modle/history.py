@@ -21,7 +21,7 @@ class History():
                 time = key[0]
                 xiaobing = key[1]
                 your = key[2] 
-                insertString = "insert into TableNUM (time,xiaobing,your) values('aa','bb','cc')"
+                insertString = "insert into tableNUM (saytime,xiaobing1,your) values('aa','bb','cc')"
                 insertString = insertString.replace('NUM',self.getTableName)
                 insertString = insertString.replace('aa', time)
                 insertString = insertString.replace('bb',xiaobing)

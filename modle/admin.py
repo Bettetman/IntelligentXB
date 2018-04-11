@@ -1,10 +1,12 @@
 #!/usr/bin/evn python
 #coding:utf-8
 from utility.ConnectMySQL import  SQLHelper
+from utility.HandFile import FileHelper
 class Admin(object):
     def __init__(self):
     #拿数据的接入工具
         self.__SqlHelper = SQLHelper()
+        self.__FileHelper = FileHelper()
      
     #操作xiaobing表
     def getSQLData(self,adminString):
@@ -37,4 +39,17 @@ class Admin(object):
     def insertHistoryData(self,AdminString):
         self.__SqlHelper.insertSQL(AdminString)
         
+    #操作文件
+    def writeBuffer(self,getBufferString):   
+        if self.__FileHelper.writeFile(getBufferString) is None:
+            pass
+        else:
+            self.__FileHelper.reSetBufferNum()
+            #保存数据从文件缓存区到数据库 同时清空缓存区
+            pass
+            self.__FileHelper.emptiedBuffer()
+            self.__FileHelper.writeFile(getBufferString)
+        
+    def getBuffer(self):
+        return self.__FileHelper.readFile_returnList()
         

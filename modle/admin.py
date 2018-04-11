@@ -30,7 +30,11 @@ class Admin(object):
         sqlString = sqlString.replace('kk', tel)
         self.__SqlHelper.insertSQL(sqlString)
 
-        
-        
+    #操作历史数数据表
+    def getHistoryData(self,AdminString):
+        return   self.__SqlHelper.GetSQLInformationDic(AdminString)
+    
+    def insertHistoryData(self,AdminString):
+        self.__SqlHelper.insertSQL(AdminString)
         
         

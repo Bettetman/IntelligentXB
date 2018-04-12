@@ -11,6 +11,7 @@ class FileHelper():
         fileName = FileNameConfig[0]
         if(self.__currentBufferNum<self.__maxBuffer):
             with open(fileName,"a") as file:
+#                 file.write(writeInf)
                 json.dump(writeInf,file)
                 self.__currentBufferNum+=1
                 print self.__currentBufferNum
@@ -27,5 +28,10 @@ class FileHelper():
                 
     def readFile_returnList(self,fileName = FileNameConfig[0]):
         with open(fileName,"r") as file:
-             return json.load(file)
-    
+              print type(file.readline())
+              for line in file.readlines():
+                  return line
+                #该方法会抛出ValueError
+#                for line in file.xreadlines():
+                      
+                     

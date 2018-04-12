@@ -34,9 +34,11 @@ class Account():
             password = self.hashlibpassWord()
             if self.isInSQL():
                 self.__admin.insertSQL(tel, password)
-                return "插入数据库成功"
+                print "插入数据库成功"
+                return True
             else:
-                return "该账户已经存入了数据库"
+                print "该账户已经存入了数据库"
+                return False
         
     def isInSQL(self):
         if self.__passWord=="" or self.__telNum =="":
@@ -45,15 +47,33 @@ class Account():
             name = self.getTelNum
             passwd = self.hashlibpassWord()
             if self.__admin.checkInSql(name) is None:
-                return True
-            else:
                 return False
+            else:
+                return True
     def checkIsRight(self):   
         if self.isInSQL():
             t = self.__admin.checkInSql(self.getTelNum)
+            print t.get("PassWord")
             if t.get("PassWord") == self.hashlibpassWord():
+                print "通过验证"
                 return True
             else:
+                print "验证失败"
                 return False
         else:
+            print "验证失败"
             return False
+        
+    def LoginAccount(self):
+        print "欢迎到登陆系统"
+        while True:
+            t=raw_input("please cin your account:")
+            try:
+                x=eval(t)
+                if type(x)==int:
+                    break
+            except:
+                    print "must cin a telnum"
+        self.__telNum =str(x);
+        password1 = raw_input("please cin your password:")
+        self.__passWord = password1

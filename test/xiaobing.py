@@ -23,17 +23,18 @@ class Xiaobing():
                     if answer == ():
                         pass
                     else:
-                        list_answer.append(answer)
-                
+                        list_answer.extend(answer)
                 for item in list_answer:
                     for value in item:
-                         print list_getanswer.append(value[1])
-                
-                return Counter(list_getanswer).most_common(1)[0][0]
-                    
+                          list_getanswer.append(value)
+                          
+                if len(list_getanswer) != 0:
+                    return Counter(list_getanswer).most_common(1)[0][0]
+                else:
+                    return "i dont know how to answer"  
             else:
                 return "i dont know how to answer"
         else:
-            return answer
+            return answer[0][1]
     def addInf(self):
         pass

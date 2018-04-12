@@ -7,13 +7,15 @@ class Admin(object):
     #拿数据的接入工具
         self.__SqlHelper = SQLHelper()
         self.__FileHelper = FileHelper()
-     
+        
+        
+        self.tableName = ""#存需要插入历史记录的表名
     #操作xiaobing表
     def getSQLData(self,adminString):
         return self.__SqlHelper.GetSQLOneInformation(adminString)
     
     def getAllSQLData(self,adminString,select_returnkand=1):
-        SQLString = "select * from xiaobing where `key` LIKE 'dd';"
+        SQLString = "select * from xiaobing where `key` LIKE '%dd%';"
         SQLString= SQLString.replace("dd",adminString)
 #        print SQLString
         if(select_returnkand==1):
@@ -40,16 +42,34 @@ class Admin(object):
         self.__SqlHelper.insertSQL(AdminString)
         
     #操作文件
-    def writeBuffer(self,getBufferString):   
+    def setTableName(self,value):
+        self.tableName = value
+        
+    def writeBuffer(self,getBufferString,tableName):   
         if self.__FileHelper.writeFile(getBufferString) is None:
-            pass
+            if self.tableName =="" or self.tableName != tableName:
+                self.setTableName(tableName)
         else:
             self.__FileHelper.reSetBufferNum()
             #保存数据从文件缓存区到数据库 同时清空缓存区
-            pass
+            self.pushBufferDataInSQL()
             self.__FileHelper.emptiedBuffer()
             self.__FileHelper.writeFile(getBufferString)
         
     def getBuffer(self):
         return self.__FileHelper.readFile_returnList()
+    
+    def pushBufferDataInSQL(self):
+        for ilist in self.getBuffer():
+                time =ilist[0]
+                xiaobing = ilist[1]
+                your = ilist[2] 
+                insertString = "insert into tableNUM (saytime,xiaobing1,your) values('aa','bb','cc')"
+                insertString = insertString.replace('NUM',self.tableName)
+                insertString = insertString.replace('aa', time)
+                insertString = insertString.replace('bb',xiaobing)
+                insertString = insertString.replace('cc',your)
+                self.insertHistoryData(insertString)
+            
+        
         

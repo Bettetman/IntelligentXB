@@ -1,6 +1,5 @@
 #!/usr/bin/evn python
 #coding:utf-8
-from modle.account import Account
 from modle.admin import Admin
 class History():
     def __init__(self):

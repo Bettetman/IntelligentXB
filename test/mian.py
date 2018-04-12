@@ -1,9 +1,9 @@
 #!/usr/bin/evn python
 #coding:utf-8
-from test.xiaobing import Xiaobing 
 from modle.account import Account
 from modle.admin import Admin
 from modle.history import History
+import time
 def handle():
     #账户测试过
 #     acount1 = Account()
@@ -23,5 +23,6 @@ def handle():
 #     his.writeInBuffer(("2015-11-11 12:22:07", "ok", "see you"))
          
 if __name__ == '__main__':
-    handle()
+      print type( time.strftime("%Y-%m-%d %X", time.localtime()))
+      print  time.strftime("%Y-%m-%d %X", time.localtime())
      

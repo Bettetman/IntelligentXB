@@ -1,13 +1,14 @@
 #!/usr/bin/evn python
 #coding:utf-8
 from modle.admin import Admin
+from history import History
 import hashlib
 class Account():
     def __init__(self,telNum="",passWord=""):
         self.__telNum = telNum
         self.__passWord = passWord
         self.__admin = Admin()
-    
+        self.his  = History()
     @property
     def changePassWord(self):
         return self.__passWord
@@ -77,3 +78,15 @@ class Account():
         self.__telNum =str(x);
         password1 = raw_input("please cin your password:")
         self.__passWord = password1
+    def startInit(self):
+        self.LoginAccount()
+        loginStr = raw_input("你是否要登陆？是输入OK，不是输入NO，登陆输入Sign")
+        if loginStr.lower() == "ok":   
+                self.checkIsRight()
+                return  True
+        elif loginStr.lower()=="no":
+                 return False
+        elif loginStr.lower =="sign":
+                self.save()
+        else:
+            return False

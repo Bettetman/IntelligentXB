@@ -4,7 +4,7 @@ from utility.Config import FileNameConfig
 import json
 class FileHelper():
     def __init__(self):
-        self.__maxBuffer = 10
+        self.__maxBuffer = 5
         self.__currentBufferNum = 1
     
     def writeFile(self,writeInf):
@@ -13,6 +13,7 @@ class FileHelper():
             with open(fileName,"a") as file:
 #                 file.write(writeInf)
                 json.dump(writeInf,file)
+                file.writelines("\n")
                 self.__currentBufferNum+=1
                 print self.__currentBufferNum
         else:
@@ -27,11 +28,9 @@ class FileHelper():
             file.write("")    
                 
     def readFile_returnList(self,fileName = FileNameConfig[0]):
-        with open(fileName,"r") as file:
-              print type(file.readline())
-              for line in file.readlines():
-                  return line
-                #该方法会抛出ValueError
-#                for line in file.xreadlines():
-                      
-                     
+         with open(fileName,"r") as fileinf:
+              i = 0
+              for iline in   fileinf.readlines():
+                  print iline
+                  i=i+1
+                  print i

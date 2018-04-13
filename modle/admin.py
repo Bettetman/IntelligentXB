@@ -33,7 +33,10 @@ class Admin(object):
         sqlString ="INSERT INTO accountlogin (telNum, PassWord) VALUES ('kk', 'aa');".replace('aa', password)
         sqlString = sqlString.replace('kk', tel)
         self.__SqlHelper.insertSQL(sqlString)
-
+    def delectAccountSQL(self,name):
+        sqlString = "DELETE FROM accountlogin WHERE  `TelNum`='name' ".replace("name", name)
+        self.__SqlHelper.deleteSQL(sqlString)
+        
     #操作历史数数据表
     def getHistoryData(self,AdminString):
         return   self.__SqlHelper.GetSQLInformationDic(AdminString)
@@ -60,7 +63,10 @@ class Admin(object):
         return self.__FileHelper.readFile_returnList()
     
     def pushBufferDataInSQL(self):
+        print self.getBuffer()
         for ilist in self.getBuffer():
+                print type(ilist)
+                print ilist
                 time =ilist[0]
                 xiaobing = ilist[1]
                 your = ilist[2] 
@@ -69,6 +75,7 @@ class Admin(object):
                 insertString = insertString.replace('aa', time)
                 insertString = insertString.replace('bb',xiaobing)
                 insertString = insertString.replace('cc',your)
+                print insertString
                 self.insertHistoryData(insertString)
             
         

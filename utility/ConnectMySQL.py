@@ -69,5 +69,17 @@ class SQLHelper():
                     cur.close()
                 if conn!=NULL:
                     conn.close()
-                
+        def deleteSQL(self,sqlString):
+            try:
+                conn =MySQLdb.connect(**MySQLconfig)
+                cur = conn.cursor()
+                reCount = cur.execute(sqlString)
+                conn.commit()
+            except MySQLdb.Error,e:
+                print e 
+            finally:
+                if cur!=NULL:
+                    cur.close()
+                if conn!=NULL:
+                    conn.close()
             

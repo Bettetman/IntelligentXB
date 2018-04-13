@@ -7,7 +7,7 @@ class History():
         self.__admin = Admin()
         self.accountNum = ""
         
-    def getTableName(self,):
+    def getTableName(self):
         if self.accountNum =="":
             return "18428396620"#self.__account.getTelNum
     
@@ -28,7 +28,7 @@ class History():
                 xiaobing = OneLogin[1]
                 your = OneLogin[2] 
                 insertString = "insert into tableNUM (saytime,xiaobing1,your) values('aa','bb','cc')"
-                insertString = insertString.replace('NUM',self.getTableName)
+                insertString = insertString.replace('NUM',self.getTableName())
                 insertString = insertString.replace('aa', time)
                 insertString = insertString.replace('bb',xiaobing)
                 insertString = insertString.replace('cc',your)

@@ -1,7 +1,7 @@
 #!/usr/bin/evn python
 #coding:utf-8
 import socket
-from account import Account
+from modle.account import Account
 import time
 class Client():
     def __init__(self,):
@@ -18,7 +18,7 @@ class Client():
                 timeData =  time.strftime("%Y-%m-%d %X", time.localtime())
                 client2.send(inputSendData)
                 account1.his.writeInBuffer((timeData, getData, inputSendData))
-#本来想用文件来设置缓存 结果json。load多个列表时间出现问题 然后就直接插数据库了        
+#本来想用文件来设置缓存 结果json。load多个列表时间出现问题 然后就直接查数据库了        
 #                account1.his.insertOneData(timeData, getData, inputSendData)
                 if inputSendData.lower()=="exit":
                     client2.close()

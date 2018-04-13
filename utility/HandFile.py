@@ -29,8 +29,7 @@ class FileHelper():
                 
     def readFile_returnList(self,fileName = FileNameConfig[0]):
          with open(fileName,"r") as fileinf:
-              i = 0
+              returnString = []
               for iline in   fileinf.readlines():
-                  print iline
-                  i=i+1
-                  print i
+                  returnString.append(json.loads(iline))
+              return returnString        

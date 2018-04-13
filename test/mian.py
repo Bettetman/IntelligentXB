@@ -26,7 +26,7 @@ def handle():
     ###
     #测试filehelper
     fp1= FileHelper()
-    fp1.readFile_returnList()
+    print fp1.readFile_returnList()
 
 if __name__ == '__main__':
      handle()

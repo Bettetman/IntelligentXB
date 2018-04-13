@@ -1,7 +1,7 @@
 #!/usr/bin/evn python
 #coding:utf-8
 import  SocketServer
-from xiaobing import Xiaobing
+from modle.xiaobing import Xiaobing
 from utility.Config import IpConfig as ip_port
 
 class Myserver(SocketServer.BaseRequestHandler):

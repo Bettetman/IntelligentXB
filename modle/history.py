@@ -18,7 +18,7 @@ class History():
         return self.__admin.getHistoryData(AdminString)
     
     def writeInBuffer(self,OneLogin):
-        self.__admin.writeBuffer(OneLogin,self.getTableName)
+        self.__admin.writeBuffer(OneLogin,self.getTableName())
     
     def getBufferData(self):
         return self.__admin.getBuffer()

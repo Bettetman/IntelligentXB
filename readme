@@ -1,0 +1,33 @@
+使用：
+test包下的server启动服务器(注意:使用前请打开数据库服务器 ,端口和ip可以在 utility包下Config配置
+然后用test包下的client启动客服端
+说明：
+用到的数据库为MySQL 库名first_db
+表有三个表
+存账户信息的表 accountlogin
+CREATE TABLE `accountlogin` (
+	`TelNum` CHAR(50) NOT NULL COLLATE 'utf8_bin',
+	`PassWord` CHAR(50) NOT NULL COLLATE 'utf8_bin'
+)
+COLLATE='utf8_bin'
+ENGINE=InnoDB
+;
+存交流历史记录的表 table18428396620
+CREATE TABLE `table18428396620` (
+	`saytime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`xiaobing1` CHAR(50) NULL DEFAULT NULL COLLATE 'utf8_bin',
+	`your` CHAR(50) NULL DEFAULT NULL COLLATE 'utf8_bin'
+)
+COLLATE='utf8_bin'
+ENGINE=InnoDB
+;
+存小冰处理数据对应的表 xiaobing
+CREATE TABLE `xiaobing` (
+	`key` CHAR(50) NULL DEFAULT NULL COLLATE 'utf8_bin',
+	`answer` CHAR(50) NOT NULL COLLATE 'utf8_bin'
+)
+COLLATE='utf8_bin'
+ENGINE=InnoDB
+;
+
+测试账户请用 18428396620

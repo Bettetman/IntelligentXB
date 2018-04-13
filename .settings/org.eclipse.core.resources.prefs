@@ -1,7 +1,6 @@
 eclipse.preferences.version=1
 encoding//modle/account.py=utf-8
 encoding//modle/admin.py=utf-8
-encoding//modle/client.py=utf-8
 encoding//modle/history.py=utf-8
 encoding//modle/xiaobing.py=utf-8
 encoding//test/client.py=utf-8

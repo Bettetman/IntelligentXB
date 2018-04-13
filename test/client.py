@@ -17,9 +17,8 @@ class Client():
                 inputSendData= raw_input("%s client:"%account1.getTelNum)
                 timeData =  time.strftime("%Y-%m-%d %X", time.localtime())
                 client2.send(inputSendData)
-                account1.his.writeInBuffer((timeData, getData, inputSendData))
-#本来想用文件来设置缓存 结果json。load多个列表时间出现问题 然后就直接查数据库了        
-#                account1.his.insertOneData(timeData, getData, inputSendData)
+                account1.his.writeInBuffer((timeData, getData, inputSendData))#通过缓存插入数据库     
+#                account1.his.insertOneData(timeData, getData, inputSendData)#不要缓存插入数据库
                 if inputSendData.lower()=="exit":
                     client2.close()
         else:
